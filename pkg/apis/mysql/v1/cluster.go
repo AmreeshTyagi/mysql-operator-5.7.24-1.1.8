@@ -22,7 +22,7 @@ import (
 
 const (
 	// The default MySQL version to use if not specified explicitly by user
-	defaultVersion  = "5.7.20-1.1.2"
+	defaultVersion  = "5.7.24-1.1.8"
 	defaultReplicas = 1
 )
 
