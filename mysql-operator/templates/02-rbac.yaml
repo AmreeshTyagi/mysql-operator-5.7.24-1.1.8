@@ -9,7 +9,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: mysql-agent
-  namespace: {{ if .Values.operator.global }}default{{ else }}{{ .Values.operator.namespace}}{{ end }}
+  namespace: {{ if .Values.operator.global }}mysql-operator{{ else }}{{ .Values.operator.namespace}}{{ end }}
 ---
 {{- if .Values.rbac.enabled }}
 apiVersion: rbac.authorization.k8s.io/v1beta1
@@ -43,7 +43,7 @@ kind: {{ if .Values.operator.global }}Cluster{{ end }}RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
   name: mysql-agent
-  namespace: {{ if .Values.operator.global }}default{{ else }}{{ .Values.operator.namespace }}{{ end }}
+  namespace: {{ if .Values.operator.global }}mysql-operator{{ else }}{{ .Values.operator.namespace }}{{ end }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: {{ if .Values.operator.global }}Cluster{{ end }}Role
@@ -51,5 +51,5 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: mysql-agent
-  namespace: {{ if .Values.operator.global }}default{{ else }}{{ .Values.operator.namespace }}{{ end }}
+  namespace: {{ if .Values.operator.global }}mysql-operator{{ else }}{{ .Values.operator.namespace }}{{ end }}
 {{- end }}
